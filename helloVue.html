@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style> 
+    .line{
+        color: pink;
+        background: #000;
+    }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!-- 作业：1 实现列表index 2 购物车 -->
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>书籍名称</th>
+                <th>出版日期</th>
+                <th>价格</th>
+                <th>购买数量</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(item,index) in books">
+            <th>{{item.id}}</th>
+            <th>{{item.name}}</th>
+            <th>{{item.date}}</th>
+            <th>{{item.price | TotalPrice}}</th> 
+            <th><button @click="Add(index)">+</button>
+                {{item.count}}
+            <button @click="Sub(index)" :disabled="item.count <= 1">-</button></th>
+            <th><button @click="DeleteItem(index)">删除</button></th>
+            </tr>
+        </tbody>
+        <h2>总价格：{{FinalPrice}}</h2>
+    </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
